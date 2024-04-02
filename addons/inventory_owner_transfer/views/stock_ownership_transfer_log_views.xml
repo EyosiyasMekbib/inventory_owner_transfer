@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <!-- Tree View -->
+        <record id="view_stock_ownership_transfer_log_tree" model="ir.ui.view">
+            <field name="name">stock.ownership.transfer.log.tree</field>
+            <field name="model">stock.ownership.transfer.log</field>
+            <field name="arch" type="xml">
+                <tree string="Ownership Transfers Log">
+                    <field name="previous_owner_id"/>
+                    <field name="new_owner_id"/>
+                    <field name="product_id"/>
+                    <field name="transferred_quantity"/>
+                    <field name="transfer_time"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Window Action -->
+        <record id="action_stock_ownership_transfer_log" model="ir.actions.act_window">
+            <field name="name">Ownership Transfer Log</field>
+            <field name="res_model">stock.ownership.transfer.log</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_stock_ownership_transfer_log_tree"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Log for tracking ownership transfers.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="menu_stock_ownership_transfer_log"
+                  name="Ownership Transfer Log"
+                  action="action_stock_ownership_transfer_log"
+                  parent="stock.menu_stock_warehouse_mgmt"
+                  sequence="5"/>
+    </data>
+</odoo>
